@@ -1,12 +1,7 @@
-i3
 kitty
 picom
-polybar
-rofi
-feh
 i3-battery-popup
-betterlockscreen
-nm-applet
 xbacklight
-xrandr
 unclutter
+neovim
+neofetch
