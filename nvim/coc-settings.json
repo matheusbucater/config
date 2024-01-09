@@ -1,4 +1,0 @@
-{
-    "coc.preferences.formatOnSaveFiletypes": ["*"],
-    "prettier.tabWidth": 4
-}

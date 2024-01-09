@@ -1,7 +1,0 @@
-kitty
-picom
-i3-battery-popup
-xbacklight
-unclutter
-neovim
-neofetch

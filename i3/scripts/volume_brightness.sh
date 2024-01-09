@@ -21,7 +21,7 @@ function get_mute {
 
 # Uses regex to get brightness from xbacklight
 function get_brightness {
-    echo $((100 * $(brightnessctl g) / 1500))
+    xbacklight | grep -Po '[0-9]{1,3}' | head -n 1
 }
 
 # Returns a mute icon, a volume-low icon, or a volume-high icon, depending on the volume
@@ -29,11 +29,11 @@ function get_volume_icon {
     volume=$(get_volume)
     mute=$(get_mute)
     if [ "$volume" -eq 0 ] || [ "$mute" == "yes" ] ; then
-        volume_icon=" "
+        volume_icon=""
     elif [ "$volume" -lt 50 ]; then
-        volume_icon=" "
+        volume_icon=""
     else
-        volume_icon=" "
+        volume_icon=""
     fi
 }
 
@@ -46,14 +46,14 @@ function get_brightness_icon {
 function show_volume_notif {
     volume=$(get_mute)
     get_volume_icon
-    dunstify -t 1000 -r 2593 -u normal "$volume_icon  $volume%" -h int:value:$volume -h string:hlcolor:$bar_color
+    dunstify -i audio-volume-muted-blocking -t 1000 -r 2593 -u normal "$volume_icon $volume%" -h int:value:$volume -h string:hlcolor:$bar_color
 }
 
 # Displays a brightness notification using dunstify
 function show_brightness_notif {
     brightness=$(get_brightness)
     get_brightness_icon
-    dunstify -t 1000 -r 2593 -u normal "$brightness_icon   $brightness%" -h int:value:$brightness -h string:hlcolor:$bar_color
+    dunstify -t 1000 -r 2593 -u normal "$brightness_icon $brightness%" -h int:value:$brightness -h string:hlcolor:$bar_color
 }
 
 # Main function - Takes user input, "volume_up", "volume_down", "brightness_up", or "brightness_down"
@@ -84,13 +84,13 @@ case $1 in
 
     brightness_up)
     # Increases brightness and displays the notification
-    brightnessctl set +5% 
+    xbacklight -inc $brightness_step -time 0 
     show_brightness_notif
     ;;
 
     brightness_down)
     # Decreases brightness and displays the notification
-    brightnessctl set 5%- 
+    xbacklight -dec $brightness_step -time 0
     show_brightness_notif
     ;;
 esac
