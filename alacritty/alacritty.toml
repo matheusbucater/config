@@ -1,0 +1,8 @@
+import = [
+    "~/.config/alacritty/rose-pine/rose-pine.toml",
+#   "~/.config/alacritty/rose-pine/rose-pine-moon.toml",
+]
+
+[window]
+decorations = "None"
+opacity = 0.9
