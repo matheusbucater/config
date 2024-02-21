@@ -1,3 +1,6 @@
 [submodule "nvim"]
 	path = nvim
 	url = git@github.com:matheusbucater/nvim.git
+[submodule "keyboard"]
+    path = keyboard
+    url = git@github.com:matheusbucater/keyboard.git
