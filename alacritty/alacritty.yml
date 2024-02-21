@@ -3,5 +3,5 @@ import:
 # - ~/.config/alacritty/rose-pine/rose-pine-moon.yml
 
 window:
-  decorations: none
+  # decorations: none
   opacity: 0.9
