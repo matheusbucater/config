@@ -1,0 +1,1 @@
+("~/Documentos/config/nvim/" "~/Documentos/advent-of-code/")
